@@ -28,10 +28,13 @@ const goToWatchList = () => {
 onMounted(async() => {
   if(!movieStore.username) {
     movieStore.isLoading = true
+    console.log(movieStore.username)
 
-    const response = await axios.get('http://localhost:3001/api/v1/auth/profile', {withCredentials: true})
+    const response = await axios.get('https://back-run-movies.onrender.com/api/v1/auth/profile', {withCredentials: true})
+    console.log(response)
     movieStore.username = response.data.username
     movieStore.email = response.data.email
+    console.log(movieStore.username)
 
     movieStore.isLoading = false
   }

@@ -20,6 +20,10 @@ const getTrendings = async(type) => {
 }
 
 const getTrendingPage = async(type) => {
+  if(!type) {
+    movieStore.getTrendings('movie')
+    return
+  }
   movieStore.isLoading = true
 
   await movieStore.getTrendings(type)
@@ -46,8 +50,13 @@ getTrendingPage(route.params.type)
     <h1 class="pb-2" style="margin-left: -10px;">Trending</h1>
       
     <ul class="nav nav-tabs my-2 border-bottom-info" style="margin-left: -10px;">
-      <li class="nav-item" @click="getTrendings('movie')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'movie'}">Movies</span></li>
-      <li class="nav-item" @click="getTrendings('tv')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'tv'}">TV series</span></li>
+      <li class="nav-item" @click="getTrendings('movie')">
+        <span class="nav-link text-info" style="cursor: pointer;" 
+        :class="{active: route.params.type == 'movie' || route.params.type == ''}">Movies</span></li>
+
+      <li class="nav-item" @click="getTrendings('tv')">
+        <span class="nav-link text-info" style="cursor: pointer;" 
+        :class="{active: route.params.type == 'tv'}">TV series</span></li>
     </ul>
 
     <div v-if="movieStore.isLoading" class="d-flex justify-content-center">

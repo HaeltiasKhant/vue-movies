@@ -21,16 +21,23 @@ const getTrendings = async(type) => {
 
 const getTrendingPage = async(type) => {
   if(!type) {
-    movieStore.getTrendings('movie')
+    movieStore.isLoading = true
+
+    await movieStore.getTrendings('movie')
+    await movieStore.getLatestMovies()
+    await movieStore.getLatestTVs()
+
+    movieStore.isLoading = false
     return
   }
   movieStore.isLoading = true
 
   await movieStore.getTrendings(type)
+  await movieStore.getLatestMovies()
+  await movieStore.getLatestTVs()
 
   movieStore.isLoading = false
-  movieStore.getLatestMovies()
-  movieStore.getLatestTVs()
+  
 }
 
 watch(route, () => {

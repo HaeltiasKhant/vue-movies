@@ -300,7 +300,7 @@ export const useMovieStore = defineStore('moviestore', {
       this.imdbRating = []
       const options = {
         method: 'GET',
-        url: `http://www.omdbapi.com/?i=${id}&apikey=686b4a1b`,
+        url: `https://www.omdbapi.com/?i=${id}&apikey=686b4a1b`,
         headers: {
           accept: 'application/json',
         }

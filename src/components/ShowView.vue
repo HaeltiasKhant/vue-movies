@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 
 const props = defineProps(['show'])
 const router = useRouter()
-const imgBaseUrl = ref('http://image.tmdb.org/t/p/w185')
+const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
 const movieID = computed(() => props.show.id)
 
 const hover = ref(false)

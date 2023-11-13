@@ -15,7 +15,7 @@ const similarMovies = computed(() => movieStore.similars)
 const videos = computed(() => movieStore.videos)
 const IMDBRating = computed(() => movieStore.imdbRating)
 
-const imgBaseUrl = ref('http://image.tmdb.org/t/p/w185')
+const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
 const favHover = ref(false)
 const watchListHover = ref(false)
 const addedToFav = ref(false)

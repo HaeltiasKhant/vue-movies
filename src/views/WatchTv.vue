@@ -18,7 +18,7 @@ const similarTvs = computed(() => movieStore.similars)
 const tvExternalIDs = computed(() => movieStore.tvExternalIDs)
 const IMDBRating = computed(() => movieStore.imdbRating)
 
-const imgBaseUrl = ref('http://image.tmdb.org/t/p/w185')
+const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
 const trailerKey = ref('')
 const trailerURL = ref('')
 

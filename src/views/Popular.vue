@@ -67,7 +67,11 @@ const getPopularPage = async(type, num) => {
     return
   }
 
-  movieStore.getPopulars(type, num)
+  movieStore.isLoading = true
+
+  await movieStore.getPopulars(type, num)
+
+  movieStore.isLoading = false
   
   for(let i=0; i<totalPages.value; i++) {
     const page = i + 1

@@ -65,7 +65,11 @@ const getTopRatedPage = async(type, num) => {
     return
   }
 
-  movieStore.getTopRateds(type, num)
+  movieStore.isLoading = true
+
+  await movieStore.getTopRateds(type, num)
+
+  movieStore.isLoading = false
   
   for(let i=0; i<totalPages.value; i++) {
     const page = i + 1

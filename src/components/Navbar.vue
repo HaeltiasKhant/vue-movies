@@ -32,8 +32,8 @@ onMounted(() => {
       <div class="container-fluid d-lg-flex justify-content-lg-between align-items-center g-0">
         <div class="d-flex my-2" role="search">
           <input @keyup.enter="navigateSearch" v-model="search" class="form-control me-2" 
-            type="text" placeholder="Search movies.." aria-label="Search" name="search">
-            
+            type="text" placeholder="Enter name..." aria-label="Search" name="search">
+
           <button @click="navigateSearch" class="btn btn-outline-info"><font-awesome-icon :icon="['fas', 'magnifying-glass']" /></button>
         </div>
         

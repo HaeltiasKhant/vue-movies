@@ -52,7 +52,13 @@ getTrendingPage(route.params.type)
 </script>
 
 <template>
-  <div class="container mt-3 text-white">
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center text-white my-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div class="container mt-3 text-white" v-else>
     
     <h1 class="pb-2" style="margin-left: -10px;">Trending</h1>
       
@@ -65,12 +71,6 @@ getTrendingPage(route.params.type)
         <span class="nav-link text-info" style="cursor: pointer;" 
         :class="{active: route.params.type == 'tv'}">TV series</span></li>
     </ul>
-
-    <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
 
     <div  class="row mb-2">
       <ShowView v-for="show in trendings" :key="show.id" :show="show" />

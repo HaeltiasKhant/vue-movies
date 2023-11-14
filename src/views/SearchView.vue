@@ -94,22 +94,25 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
 </script>
 
 <template>
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center text-white my-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
   <div class="mx-lg-5 mt-lg-3 mt-1 text-white">
 
     <h1 class="pe-lg-3 mb-lg-4 mb-1" >Searched results for '{{ route.params.searchName }}', 
       <span class="fs-3">page - {{ route.params.page }}</span></h1>
 
     <ul class="nav nav-tabs my-2 border-bottom-info" style="margin-left: -10px;">
-      <li class="nav-item" @click="getSearchs('movie')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'movie'}">Movies</span></li>
-      <li class="nav-item" @click="getSearchs('tv')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'tv'}">TV series</span></li>
+      <li class="nav-item" @click="getSearchs('movie')">
+        <span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'movie'}">Movies</span></li>
+
+      <li class="nav-item" @click="getSearchs('tv')">
+        <span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'tv'}">TV series</span></li>
     </ul>
-
-    <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-
+  
     <div v-if="!pageExists" class="container text-center my-4">
       <h1 class="fs-1">Page not found</h1>
     </div>
@@ -119,9 +122,14 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
     </div>
 
     <div class="d-flex justify-content-center mb-4" v-if="totalPages < 6">
-      <button class="btn btn-light rounded-5 me-lg-2 me-1" @click="goPreviousPage(route.params.page)"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
-      <button class="btn btn-light rounded-5 me-lg-2 me-1"  v-for="(page, i) in pages" :key="page.id" @click="goToPage(page)" :class="{pageActive : i == parseInt(route.params.page) - 1}">{{ page }}</button>
-      <button class="btn btn-light rounded-5 me-lg-2 me-1" @click="goNextPage(route.params.page)" ><font-awesome-icon :icon="['fas', 'angle-right']"  /></button>
+      <button class="btn btn-light rounded-5 me-lg-2 me-1" 
+        @click="goPreviousPage(route.params.page)"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
+
+      <button class="btn btn-light rounded-5 me-lg-2 me-1"  v-for="(page, i) in pages" :key="page.id" 
+        @click="goToPage(page)" :class="{pageActive : i == parseInt(route.params.page) - 1}">{{ page }}</button>
+
+      <button class="btn btn-light rounded-5 me-lg-2 me-1" 
+        @click="goNextPage(route.params.page)" ><font-awesome-icon :icon="['fas', 'angle-right']"  /></button>
     </div>
 
     <div class="d-lg-flex justify-content-center mb-4" v-else>
@@ -146,8 +154,11 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
         <font-awesome-icon :icon="['fas', 'angle-right']"  /></button>
 
       <div class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
-        <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" name="pageNum">
-        <button class="btn btn-outline-info" @click="goToPage(inputNum)" ><font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>
+        <input type="text" placeholder="Jump to-" class="border rounded me-1" 
+          style="width: 100px; height: 38px;" v-model="inputNum" name="pageNum">
+
+        <button class="btn btn-outline-info" @click="goToPage(inputNum)" >
+          <font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>
       </div>
     </div>
   </div>

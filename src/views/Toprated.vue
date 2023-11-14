@@ -91,18 +91,18 @@ getTopRatedPage(route.params.type, route.params.page)
 </script>
 
 <template>
-  <div class=" mt-lg-4 mt-2 mx-lg-5 mx-1 text-white">
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center text-white my-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div class=" mt-lg-4 mt-2 mx-lg-5 mx-1 text-white" v-else>
     <h1 class="pe-3 mb-lg-4 mb-2" >Top rated, <span class="fs-3">page - {{ route.params.page }}</span></h1>
     <ul class="nav nav-tabs my-2 border-bottom-info" >
       <li class="nav-item" @click="getTopRateds('movie')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'movie'}">Movies</span></li>
       <li class="nav-item" @click="getTopRateds('tv')"><span class="nav-link text-info" style="cursor: pointer;" :class="{active: route.params.type == 'tv'}">TV series</span></li>
     </ul>
-
-    <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
 
     <div v-if="!pageExists" class="container text-center my-4">
       <h1 class="fs-1">Page not found</h1>

@@ -63,6 +63,12 @@ getTV()
 </script>
 
 <template>
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
   <p class="text-light fs-6 mt-lg-3 ms-lg-3">
     You are watching {{ details.name }}/season {{ seasonInfos.season_number}}/episode {{ route.params.epiNum }}
   </p>

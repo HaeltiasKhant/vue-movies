@@ -48,32 +48,6 @@ const router = createRouter({
       path: '/watch/tv/:id?/:ssNum?/:epiNum?',
       name: 'watchTv',
       component: () => import('../views/WatchTv.vue')
-    },
-    
-    {
-      path: '/acc/login',
-      name: 'login',
-      component: () => import('../views/loginView.vue')
-    },
-    {
-      path: '/acc/signup',
-      name: 'signup',
-      component: () => import('../views/SignupView.vue')
-    },
-    {
-      path: '/acc/profile',
-      name: 'profile',
-      component: () => import('../views/ProfileView.vue')
-    },
-    {
-      path: '/acc/profile/favorites',
-      name: 'favorites',
-      component: () => import('../views/Favorites.vue')
-    },
-    {
-      path: '/acc/profile/watch-list',
-      name: 'watchList',
-      component: () => import('../views/WatchList.vue')
     }
   ]
 })

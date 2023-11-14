@@ -18,14 +18,7 @@ export const useMovieStore = defineStore('moviestore', {
     similars: [],
     tvExternalIDs: [],
     imdbRating: [],
-    username: '',
-    email: '',
-    isLoggedin: '',
     isLoading: false,
-    favMoviesIDs: [],
-    favTvsIDs: [],
-    watchListMoviesIDs: [],
-    watchListTvsIDs: [],
     totalPages: 0,
   }),
 
@@ -309,107 +302,6 @@ export const useMovieStore = defineStore('moviestore', {
       try{
         const response = await axios.request(options)
         this.imdbRating = response.data
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async login(data) {
-      try{
-        const response = await axios.post('https://back-run-movies.onrender.com/api/v1/auth/login', data, { withCredentials: true})
-        const { username, email } = response.data
-        this.username = username
-        this.email = email
-        localStorage.setItem('isLoggedin', 'true')
-        this.isLoggedin = localStorage.getItem('isLoggedin')
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async logout() {
-      try{
-        const response = await axios.post('https://back-run-movies.onrender.com/api/v1/auth/logout', null, {
-          withCredentials: true
-        })
-        this.isLoggedin = ''
-        localStorage.clear()
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async storeFavMovieID(movieID) {
-      try {
-        const response = await axios.post('https://back-run-movies.onrender.com/api/v1/user-acts/fav-movies', { id: movieID}, { withCredentials: true })
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async storeFavTvID(tvID) {
-      try {
-        const response = await axios.post('https://back-run-movies.onrender.com/api/v1/user-acts/fav-tvs', { id: tvID}, { withCredentials: true })
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async getFavMoviesIDs() {
-      this.favMoviesIDs = []
-      
-      try{
-        const response = await axios.get('https://back-run-movies.onrender.com/api/v1/user-acts/fav-movies', {withCredentials: true})
-        this.favMoviesIDs = response.data
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async getFavTvsIDs() {
-      this.favTvsIDs = []
-      
-      try{
-        const response = await axios.get('https://back-run-movies.onrender.com/api/v1/user-acts/fav-tvs', {withCredentials: true})
-        this.favTvsIDs = response.data
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async saveWatchListMovieID(movieID) {
-      try {
-        const response = await axios.post('https://back-run-movies.onrender.com/api/v1/user-acts/watchlist-movies', { id: movieID}, { withCredentials: true })
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async saveWatchListTvID(tvID) {
-      try {
-        const response = await axios.post('https://back-run-movies.onrender.com/user-acts/watchlist-tvs', { id: tvID}, { withCredentials: true })
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async getWatchListMoviesIDs() {
-      this.watchListMoviesIDs = []
-      
-      try{
-        const response = await axios.get('https://back-run-movies.onrender.com/api/v1/user-acts/watchlist-movies', {withCredentials: true})
-        this.watchListMoviesIDs = response.data
-      } catch(err) {
-        console.log(err)
-      }
-    },
-
-    async getWatchListTvsIDs() {
-      this.watchListTvsIDs = []
-      
-      try{
-        const response = await axios.get('https://back-run-movies.onrender.com/api/v1/user-acts/watchlist-tvs', {withCredentials: true})
-        this.watchListTvsIDs = response.data
       } catch(err) {
         console.log(err)
       }

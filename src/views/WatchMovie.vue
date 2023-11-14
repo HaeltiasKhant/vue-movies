@@ -51,6 +51,12 @@ getmovie()
 </script>
 
 <template>
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  
   <div class="text-light mx-lg-5">
     <video width="" height="" class="mb-2 mt-lg-4 mt-1 " controls style=" min-width: 100%">
       <source src="" type="video/mp4">
@@ -68,7 +74,7 @@ getmovie()
         <div class="col-lg-9">
           <div class="card-body p-0">
 
-            <h5 class="card-title fs-2 mb-3 ">{{ details.title }}</h5>
+            <h5 class="card-title fs-2 my-2 ">{{ details.title }}</h5>
 
             <div class="d-flex align-items-center mb-2">
               <a :href="trailerURL">

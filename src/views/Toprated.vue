@@ -134,7 +134,7 @@ getTopRatedPage(route.params.type, route.params.page)
         <font-awesome-icon :icon="['fas', 'angle-right']"  /></button>
 
       <div class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
-        <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" >
+        <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" name="pageNum">
         <button class="btn btn-outline-info" @click="goToPage(inputNum)" ><font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>
       </div>
     </div>

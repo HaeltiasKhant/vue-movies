@@ -62,7 +62,11 @@ const getSearchPage = async(type, name, num) => {
 
   pages.value = []
 
+  movieStore.isLoading = true
+
   await movieStore.getsearcheds(type, name, num)
+
+  movieStore.isLoading = fale
 
   if(num > totalPages.value ) {
     hasInputNum.value = false

@@ -63,7 +63,7 @@ getTV()
 </script>
 
 <template>
-  <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center text-white my-4">
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>

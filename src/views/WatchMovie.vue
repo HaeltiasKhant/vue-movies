@@ -51,13 +51,13 @@ getmovie()
 </script>
 
 <template>
-  <div v-if="movieStore.isLoading" class="d-flex justify-content-center">
+  <div v-if="movieStore.isLoading" class="d-flex justify-content-center text-white my-4">
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  
-  <div class="text-light mx-lg-5">
+
+  <div class="text-light mx-lg-5" v-else>
     <video width="" height="" class="mb-2 mt-lg-4 mt-1 " controls style=" min-width: 100%">
       <source src="" type="video/mp4">
       <source src="" type="video/ogg">

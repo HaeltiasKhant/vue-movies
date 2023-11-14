@@ -129,44 +129,7 @@ getTV()
 
       <div class="col-lg-8 col-12 card text-black border border-info border-3 p-1">
 
-        <transition>
-          <div v-if="showAddedNoti" class="position-absolute top-50 end-0 translate-middle-y bg-info border rounded">
-            <p class="px-3 py-2 text-center">Added to favorites. Go to 
-              <a href="http://localhost:5173/acc/profile/favorites">favorites.</a>
-            </p>
-          </div>
-        </transition>
-
-        <transition>
-          <div v-if="showSavedNoti" class="position-absolute top-50 end-0 translate-middle-y bg-info border rounded">
-            <p class="px-3 py-2 text-center">Saved to watchlist. Go to 
-              <a href="http://localhost:5173/acc/profile/watch-list">watchlist.</a>
-            </p>
-          </div>
-        </transition>
-
         <div class="card-body p-2">
-          <div class="position-absolute top-0 end-0 fs-4 me-2 mt-2">
-
-            <transition>
-              <span v-if="favHover" class="text-dark border border-info rounded px-2 py-1 fw-light fs-6">Add to
-                favorites</span>
-            </transition>
-
-            <span @mouseover="favHover = true" @mouseleave="favHover = false" @click="addToFav"
-              :class="{ colorRed: addedToFav }"><font-awesome-icon :icon="['fas', 'heart']" class="px-2 border border-0"
-                style="cursor: pointer;" /></span>
-
-            <transition>
-              <span v-if="watchListHover" class="text-dark border border-info rounded px-2 py-1 fw-light fs-6 ">Save to
-                watchlist</span>
-            </transition>
-
-            <span @mouseover="watchListHover = true" @mouseleave="watchListHover = false"
-              @click="saveToWatchList"><font-awesome-icon :icon="['fas', 'plus']" class="px-2 border border-0"
-                style="cursor: pointer;" /></span>
-
-          </div>
 
           <button @click="scrollToEpisodes" type="button" class="btn btn-info rounded-3 my-2">
             <font-awesome-icon :icon="['fas', 'play']" /> Watch now 

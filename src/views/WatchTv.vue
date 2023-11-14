@@ -69,11 +69,11 @@ getTV()
     </div>
   </div>
 
-  <p class="text-light fs-6 mt-lg-3 ms-lg-3">
+  <p class="text-light fs-6 mt-lg-3 ms-lg-3" v-else>
     You are watching {{ details.name }}/season {{ seasonInfos.season_number}}/episode {{ route.params.epiNum }}
   </p>
 
-  <div class="text-light mx-lg-5 mx-1">
+  <div class="text-light mx-lg-5 mx-1" v-if="!movieStore.isLoading">
     <video width="" height="" class="mb-2 mt-lg-4 mt-1  " controls style=" min-width: 100%">
       <source src="" type="video/mp4">
       <source src="" type="video/ogg">

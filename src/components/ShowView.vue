@@ -86,7 +86,6 @@ checkName()
   left: 40%;
   transform: translateY(200%);
   transition: all 0.6s;
-
 }
 
 .playAni {
@@ -94,4 +93,5 @@ checkName()
   z-index: 1;
   transform: translateY(0);
   transition: all 0.6s;
-}</style>
+}
+</style>

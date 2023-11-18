@@ -118,7 +118,7 @@ export const useMovieStore = defineStore('moviestore', {
 
     async getsearcheds(type, name, page) {
       this.searcheds = []
-      this.total_pages = ''
+      this.totalPages = 0
       const options = {
         method: 'GET',
         url: `https://api.themoviedb.org/3/search/${type}?query=${name}&include_adult=false&language=en-US&page=${page}`,

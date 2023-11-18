@@ -58,33 +58,33 @@ getTrendingPage(route.params.type)
     </div>
   </div>
 
-  <div class="container mt-3 text-white" v-else>
+  <div class="mx-lg-5 mx-1 mt-3 text-white" v-else>
     
-    <h1 class="pb-2" style="margin-left: -10px;">Trending</h1>
+    <h1 class="pb-2 fw-normal">Trending</h1>
       
-    <ul class="nav nav-tabs my-2 border-bottom-info" style="margin-left: -10px;">
+    <ul class="nav nav-tabs my-2 border-bottom-info" >
       <li class="nav-item" @click="getTrendings('movie')">
         <span class="nav-link text-info" style="cursor: pointer;" 
-        :class="{active: route.params.type == 'movie' || route.params.type == ''}">Movies</span></li>
+        :class="{active: route.params.type == 'movie' || route.params.type == ''}"><font-awesome-icon :icon="['fas', 'film']" /> Movies</span></li>
 
       <li class="nav-item" @click="getTrendings('tv')">
         <span class="nav-link text-info" style="cursor: pointer;" 
-        :class="{active: route.params.type == 'tv'}">TV series</span></li>
+        :class="{active: route.params.type == 'tv'}"><font-awesome-icon :icon="['fas', 'tv']" /> TV series</span></li>
     </ul>
 
-    <div  class="row mb-2">
+    <div  class="row mb-2 g-1">
       <ShowView v-for="show in trendings" :key="show.id" :show="show" />
     </div>
 
-    <h1 class="pb-2" style="margin-left: -10px;">Latest Movies</h1>
+    <h1 class="pb-2 fw-normal" >Latest Movies</h1>
 
-    <div  class="row mb-2">
+    <div  class="row mb-2 g-1">
       <ShowView v-for="show in latestMovies.slice(0, 18)" :key="show.id" :show="show" />
     </div>
-
-    <h1 class="pb-2" style="margin-left: -10px;">Latest TV Shows</h1>
+ 
+    <h1 class="pb-2 fw-normal" >Latest TV Shows</h1>
     
-    <div  class="row mb-2">
+    <div  class="row mb-2 g-1">
       <ShowView v-for="show in latestTVs.slice(0, 18)" :key="show.id" :show="show" />
     </div>
 

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="row bg-light-subtle p-1 p-lg-5" style="width: 100vw;">
+    <div class="row bg-light-subtle p-1 px-lg-5 py-lg-3" style="width: 100vw;">
       <div class="col-lg-2 text-center">
         <font-awesome-icon class="mt-4" style="font-size: 60px;" :icon="['fas', 'film']" />
         <p style="color: #8d8d8d;">&copy; Fakelixer</p>

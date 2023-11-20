@@ -103,7 +103,7 @@ getmovie()
     </div>
   </div>
 
-  <div class="container text-white" v-else>
+  <div class="container text-white mb-5" v-else>
     <div class="row my-2">
       <div class="col-lg-4 col-12 position-relative p-0">
         

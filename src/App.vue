@@ -1,15 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router'
-import Navbar from './components/Navbar.vue'
+import { RouterView, useRoute } from 'vue-router'
 
+const route = useRoute()
 </script>
 
 <template>
-  <Navbar />
-  <RouterView />
-  <footer class="text-center bg-light py-4 text-muted container-fluid position-absolute bottom-0">
-      &copy; Copyright 2023
-  </footer>
+  <RouterView/>
 </template>
 
 <style scoped>

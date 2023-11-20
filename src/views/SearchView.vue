@@ -95,7 +95,7 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
     </div>
   </div>
 
-  <div class="mx-lg-5 mt-lg-3 mt-1 text-white" v-else>
+  <div class="mx-lg-5 mt-lg-3 mt-1 mb-5 text-white" v-else>
 
     <h2 class="pe-lg-3 mb-lg-4 mb-1 fw-normal my-3" >Search results for "{{ route.params.searchName }}"</h2>
 

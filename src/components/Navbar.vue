@@ -15,6 +15,7 @@ const navigateSearch = async() => {
   }
   else return
 }
+
 onMounted(() => {
   if(!movieStore.isLoggedin) movieStore.isLoggedin = localStorage.getItem('isLoggedin')
 })
@@ -48,7 +49,7 @@ onMounted(() => {
  
       <ul class="nav nav-underline">
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-info" aria-current="page" href="/movie">Home</a>
+          <a class="nav-link text-info" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item pe-lg-4">
           <a class="nav-link text-info" href="/popular/movie/page-1">Popular shows</a>

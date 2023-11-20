@@ -115,7 +115,7 @@ getTV()
     </div>
   </div>
 
-  <div class="mx-lg-5 text-white" v-else>
+  <div class="mx-lg-5 text-white mb-5" v-else>
     <div class="row my-lg-4 my-2 g-0">
       <div class="col-lg-4 col-12 position-relative p-0">
 

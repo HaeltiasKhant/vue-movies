@@ -57,7 +57,7 @@ getmovie()
     </div>
   </div>
 
-  <div class="text-light mx-lg-5" v-else>
+  <div class="text-light mx-lg-5 mb-5" v-else>
     <video width="" height="" class="mb-2 mt-lg-4 mt-1 " controls style=" min-width: 100%">
       <source src="" type="video/mp4">
       <source src="" type="video/ogg">

@@ -69,7 +69,7 @@ getTV()
     </div>
   </div>
 
-  <p class="text-light fs-6 mt-lg-3 ms-lg-3" v-else>
+  <p class="text-light fs-6 mt-lg-3 ms-lg-3 mb-5" v-else>
     You are watching {{ details.name }}/season {{ seasonInfos.season_number}}/episode {{ route.params.epiNum }}
   </p>
 

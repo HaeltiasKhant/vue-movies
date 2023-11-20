@@ -78,7 +78,7 @@ getTopRatedPage(route.params.type, route.params.page)
     </div>
   </div>
 
-  <div class=" mt-lg-4 mt-2 mx-lg-5 mx-1 text-white" v-else>
+  <div class=" mt-lg-4 mt-2 mx-lg-5 mx-1 mb-5 text-white" v-else>
     
     <h1 class="pe-3 mb-lg-4 mb-3 fw-normal mt-2" >Top rated shows</h1>
     <ul class="nav nav-tabs  border-bottom-info mb-lg-3 mb-2" >

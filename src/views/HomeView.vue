@@ -3,6 +3,7 @@ import ShowView from '../components/ShowView.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useMovieStore } from '../stores/counter';
+import Footer from '../components/Footer.vue';
 
 const trendings = computed(() => movieStore.trendings)
 const latestMovies = computed(() => movieStore.latestMovies)
@@ -13,10 +14,10 @@ const router = useRouter()
 
 const getTrendings = async(type) => {
   if(type == 'movie') {
-    router.push(`/${type}`)
+    router.push(`/home/${type}`)
   }
 
-  if(type == 'tv') router.push(`/${type}`)
+  if(type == 'tv') router.push(`/home/${type}`)
 }
 
 const getTrendingPage = async(type) => {
@@ -58,7 +59,7 @@ getTrendingPage(route.params.type)
     </div>
   </div>
 
-  <div class="mx-lg-5 mx-1 mt-3 text-white" v-else>
+  <div class="mx-lg-5 mx-1 mt-3 mb-5 text-white" v-else>
     
     <h1 class="pb-2 fw-normal">Trending</h1>
       
@@ -87,6 +88,7 @@ getTrendingPage(route.params.type)
     <div  class="row mb-2 g-1">
       <ShowView v-for="show in latestTVs.slice(0, 18)" :key="show.id" :show="show" />
     </div>
-
   </div>
+
+  
 </template>

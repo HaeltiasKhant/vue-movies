@@ -212,7 +212,7 @@ getTV()
 
     <p class="mt-4 mb-2 fs-2">You may also like</p>
 
-    <div class="row g-1">
+    <div class="row g-0">
       <ShowView v-for="show in similarTvs.slice(0, 12)" :key="show.id" :show="show" />
     </div>
   </div>

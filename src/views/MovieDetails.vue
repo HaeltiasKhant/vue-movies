@@ -16,72 +16,33 @@ const videos = computed(() => movieStore.videos)
 const IMDBRating = computed(() => movieStore.imdbRating)
 
 const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
-const favHover = ref(false)
-const watchListHover = ref(false)
-const addedToFav = ref(false)
-const showAddedNoti = ref(false)
-const showSavedNoti = ref(false)
 const trailerKey = ref('')
 const trailerURL = ref('')
 
-const addToFav = () => {
-
-  const loggedIn = localStorage.getItem('isLoggedin')
-
-  if(loggedIn) {
-    addedToFav.value = !addedToFav.value
-    if(addedToFav.value) {
-      showAddedNoti.value = true
-
-      movieStore.storeFavMovieID(route.params.id)
-    }
-    
-    if(addedToFav.value && showAddedNoti.value) {
-      setTimeout(() => {
-        showAddedNoti.value = false
-      }, 6000);
-    }
-  } else {
-    router.push('/acc/login')
-  }
-}
-
-const saveToWatchList = () => {
-  const loggedIn = localStorage.getItem('isLoggedin')
-  if(loggedIn) {
-    showSavedNoti.value = !showSavedNoti.value
-    movieStore.saveWatchListMovieID(route.params.id)
-    if(showSavedNoti.value) {
-      setTimeout(() => {
-        showSavedNoti.value = false
-      }, 6000);
-    }
-  } else {
-    router.push('/acc/login')
-  }
-}
-
 const getmovie = async() => {
 
-  movieStore.isLoading = true
+  if(!movieID.value) return
+  else {
+    movieStore.isLoading = true
 
-  await movieStore.getVideos('movie', movieID.value)
+    await movieStore.getVideos('movie', movieID.value)
 
-  for(let video in videos.value) {
-    const name = videos.value[video].name
-    if(name == "Official Trailer" || name == "Main Trailer") {
-      trailerKey.value = videos.value[video].key
+    for(let video in videos.value) {
+      const name = videos.value[video].name
+      if(name == "Official Trailer" || name == "Main Trailer") {
+        trailerKey.value = videos.value[video].key
+      }
     }
+
+    trailerURL.value = `https://www.youtube.com/watch?v=${trailerKey.value}`
+
+    await movieStore.getDetails('movie', movieID.value)
+    await movieStore.getMovieCasts(movieID.value)
+    await movieStore.getSimilars('movie', movieID.value)
+    await movieStore.getIMDBrating(details.value.imdb_id)
+
+    movieStore.isLoading = false
   }
-
-  trailerURL.value = `https://www.youtube.com/watch?v=${trailerKey.value}`
-
-  await movieStore.getDetails('movie', movieID.value)
-  await movieStore.getMovieCasts(movieID.value)
-  await movieStore.getSimilars('movie', movieID.value)
-  await movieStore.getIMDBrating(details.value.imdb_id)
-
-  movieStore.isLoading = false
 }
 
 watch(route, () => {

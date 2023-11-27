@@ -41,8 +41,8 @@ const goToHomePage = () => {
     </div>
 
     <transition appear name="button">
-      <div @click="goToHomePage" class="d-flex justify-content-center mt-lg-5 mt-3">
-        <button class="btn btn-info fs-4 fw-medium py-3 px-5 mb-5 text-light border-light border-2 rounded-pill">View Full Site
+      <div class="d-flex justify-content-center mt-lg-5 mt-3">
+        <button @click="goToHomePage" class="btn btn-info fs-4 fw-medium py-3 px-5 mb-5 text-light border-light border-2 rounded-pill">View Full Site
           <font-awesome-icon class="" :icon="['fas', 'right-long']" /></button>
       </div>
     </transition>
@@ -126,8 +126,8 @@ const goToHomePage = () => {
   </div>
 
   <transition appear name="button">
-    <div @click="goToHomePage" class="d-flex justify-content-center my-lg-5 my-4">
-      <button class="btn btn-info fs-4 fw-medium py-3 px-4 text-light border-light border-2 rounded-pill">Go to Fakelixer
+    <div class="d-flex justify-content-center my-lg-5 my-4">
+      <button @click="goToHomePage" class="btn btn-info fs-4 fw-medium py-3 px-4 text-light border-light border-2 rounded-pill">Go to Fakelixer
         <font-awesome-icon class="" :icon="['fas', 'right-long']" /></button>
     </div>
   </transition>
@@ -137,19 +137,19 @@ const goToHomePage = () => {
  
       <ul class="nav nav-underline">
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="/home">Andriod app</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="#">Andriod app</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="/home">Terms of service</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="#">Terms of service</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="/home">Contact us</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="#">Contact us</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="/home">Free movie apps</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="#">Free movie apps</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="/home">Sitemap</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="#">Sitemap</a>
         </li>
       </ul>
 

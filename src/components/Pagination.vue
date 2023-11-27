@@ -1,44 +1,40 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useMovieStore } from '../stores/counter';
+
+const moviestrote = useMovieStore()
 
 const route = useRoute()
 const router = useRouter()
-const pages= ref([])
 
-const { totalPages, hasInputNum, pageNum } = defineProps(['totalPages', 'hasInputNum', 'pageNum'])
-
-for(let i=0; i<totalPages; i++) {
-    const page = i + 1
-    pages.value.push(page)
-  } 
+const { pages, totalPages, hasInputNum, pageNum } = defineProps(['pages', 'totalPages', 'hasInputNum', 'pageNum'])
 
 const goPreviousPage = async(num) => {
   const previousPage = parseInt(num) - 1
   if(previousPage <= 0) return
-  if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: previousPage}})
-  else router.push({ name: route.name, params: { type: route.params.type , page: previousPage }})
+  else {
+    if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: previousPage}})
+    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: previousPage }})
+    else router.push({ name: route.name, params: { type: route.params.type , page: previousPage }})
+  }
 }
 
 const goNextPage = async(num) => {
   const nextPage = parseInt(num) + 1
   if(nextPage > totalPages) return
-  if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: nextPage}})
-  else router.push({ name: route.name, params: { type: route.params.type , page: nextPage }})
+  else {
+    if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: nextPage}})
+    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: nextPage }})
+    else router.push({ name: route.name, params: { type: route.params.type , page: nextPage }})
+  }
 }
 
 const goToPage = async(num) => {
 
-  if(num > totalPages.value ) {
-    hasInputNum.value = false
-    pageExists.value = false
-    if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: num}})
-    else router.push({ name: route.name, params: { type: route.params.type , page: num }})
-    return
-  } else {
-    if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: num}})
-    else router.push({ name: route.name, params: { type: route.params.type , page: num }})
-  }
+  if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: num}})
+  else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: num }})
+  else router.push({ name: route.name, params: { type: route.params.type , page: num }})
 }
 
 </script>

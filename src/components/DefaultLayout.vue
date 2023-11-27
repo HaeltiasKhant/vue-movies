@@ -10,8 +10,9 @@ const movieStore = useMovieStore()
 
 <template>
   <Navbar v-if="route.name != 'welcome'"/>
-  <main>
+  <main class="position-relative">
     <RouterView  />
+    <Footer v-if="!movieStore.isLoading && route.name != 'welcome'" />
   </main>
-  <Footer v-if="!movieStore.isLoading && route.name != 'welcome'" />
+  
 </template>

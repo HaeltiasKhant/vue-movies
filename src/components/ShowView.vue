@@ -44,10 +44,10 @@ checkName()
 </script>
 
 <template>
-  <div class="col-6 col-md-4 col-lg-2 position-relative bg-transparent mb-4 p-0" @mouseover="hover = true"
+  <div class="col-6 col-md-4 col-lg-2 position-relative bg-transparent mb-4 px-1" @mouseover="hover = true"
     @mouseleave="hover = false">
 
-    <div @click="getShowInfos" style="cursor: pointer;" class="me-lg-4 me-2 position-relative">
+    <div @click="getShowInfos" style="cursor: pointer;" class="me-lg-4 position-relative">
       <div class="bg-info h-100 w-100 rounded" :class="{ hoverAni: hover }"></div>
       <font-awesome-icon :icon="['fas', 'circle-play']" class="fs-1 hiddenAni" :class="{ playAni: hover }" />
       <img :src="imgBaseUrl + props.show.poster_path" class="rounded w-100" alt="...">

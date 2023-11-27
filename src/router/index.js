@@ -20,6 +20,11 @@ const router = createRouter({
           component: HomeView
         },
         {
+          path: '/:type/genre-:genre_type/:id?/page-:page?',
+          name: 'genre',
+          component: () => import('../views/GenreView.vue')
+        },
+        {
           path: '/popular/:type?/page-:page?',
           name: 'popular',
           // route level code-splitting

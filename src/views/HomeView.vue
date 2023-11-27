@@ -3,7 +3,6 @@ import ShowView from '../components/ShowView.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useMovieStore } from '../stores/counter';
-import Footer from '../components/Footer.vue';
 
 const trendings = computed(() => movieStore.trendings)
 const latestMovies = computed(() => movieStore.latestMovies)
@@ -59,7 +58,7 @@ getTrendingPage(route.params.type)
     </div>
   </div>
 
-  <div class="mx-lg-5 mx-1 mt-3 mb-5 text-white" v-else>
+  <div class="mx-lg-5 mx-1 mt-3 text-white mb-5" v-else>
     
     <h1 class="pb-2 fw-normal">Trending</h1>
       
@@ -73,22 +72,20 @@ getTrendingPage(route.params.type)
         :class="{active: route.params.type == 'tv'}"><font-awesome-icon :icon="['fas', 'tv']" /> TV series</span></li>
     </ul>
 
-    <div  class="row mb-2 g-1">
+    <div  class="row mb-2 g-0">
       <ShowView v-for="show in trendings" :key="show.id" :show="show" />
     </div>
 
     <h1 class="pb-2 fw-normal" >Latest Movies</h1>
 
-    <div  class="row mb-2 g-1">
+    <div  class="row mb-2 g-0">
       <ShowView v-for="show in latestMovies.slice(0, 18)" :key="show.id" :show="show" />
     </div>
  
     <h1 class="pb-2 fw-normal" >Latest TV Shows</h1>
     
-    <div  class="row mb-2 g-1">
+    <div  class="row mb-2 g-0">
       <ShowView v-for="show in latestTVs.slice(0, 18)" :key="show.id" :show="show" />
     </div>
   </div>
-
-  
 </template>

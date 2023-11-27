@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const useMovieStore = defineStore('moviestore', {
   state: () => ({
+    genres: [],
+    showsByGenre: [],
     trendings: [],
     latestMovies: [],
     latestTVs: [],
@@ -36,6 +38,47 @@ export const useMovieStore = defineStore('moviestore', {
       try {
         const response = await axios.request(options)
         this.trendings = response.data.results
+      }catch(err) {
+        console.log(err)
+      }
+    },
+
+    async getGenres(type) {
+      this.genres = []
+      const options = {
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/genre/${type}/list?language=en`,
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmE5Nzg5MmNjMWFlOGZjNTU0ODZmYjgxMzdjYzFkYSIsInN1YiI6IjY0ZmJlNTc1ZWZlYTdhMDBhYWQ1NDYyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TR8h9YvMXeTckhHCcJgSa6So6rAGOx7NDsL9e9RY6uo'
+        }
+      };
+      try {
+        const response = await axios.request(options)
+        const { genres } = response.data
+        this.genres = genres
+      }catch(err) {
+        console.log(err)
+      }
+    },
+
+    async getShowsByGenre(type, id, num) {
+      this.totalPages = 0
+      this.showsByGenre = []
+      const options = {
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=${num}&sort_by=popularity.desc&with_genres=${id}`,
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmE5Nzg5MmNjMWFlOGZjNTU0ODZmYjgxMzdjYzFkYSIsInN1YiI6IjY0ZmJlNTc1ZWZlYTdhMDBhYWQ1NDYyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TR8h9YvMXeTckhHCcJgSa6So6rAGOx7NDsL9e9RY6uo'
+        }
+      };
+      try {
+        const response = await axios.request(options)
+        const responsedTotalPages = await response.data.total_pages
+        if(responsedTotalPages > 100) this.totalPages = 100
+        else this.totalPages = responsedTotalPages
+        this.showsByGenre = response.data.results
       }catch(err) {
         console.log(err)
       }

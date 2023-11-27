@@ -33,6 +33,7 @@ const getSearchs = async(type) => {
 }
 
 const goToPageByInput = async(num) => {
+  if(!num) return
 
   if(num > totalPages.value ) {
     hasInputNum.value = false
@@ -45,6 +46,8 @@ const goToPageByInput = async(num) => {
 }
 
 const getSearchPage = async(type, name, num) => {
+
+  if(!name) return
 
   hasResults.value = true
 
@@ -95,7 +98,7 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
     </div>
   </div>
 
-  <div class="mx-lg-5 mt-lg-3 mt-1 mb-5 text-white" v-else>
+  <div class="mx-lg-5 mx-1 mt-lg-3 mt-1 mb-5 text-white" v-else>
 
     <h2 class="pe-lg-3 mb-lg-4 mb-1 fw-normal my-3" >Search results for "{{ route.params.searchName }}"</h2>
 
@@ -109,7 +112,7 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
           <font-awesome-icon :icon="['fas', 'tv']" /> TV series</span></li>
     </ul>
 
-    <Pagination :totalPages="totalPages" :hasInputNum="hasInputNum" :pageNum="pageNum"  />
+    <Pagination :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum"  />
 
     <div v-if="!hasResults" class="container text-center my-4">
       <h1 class="fs-1">No results</h1>
@@ -124,7 +127,7 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
     </div>
 
     <div class="d-lg-flex align-items-baseline justify-content-center" >
-      <Pagination :totalPages="totalPages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
+      <Pagination :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
       <div class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
         <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" name="pageNumber">
         <button class="btn btn-outline-info" @click="goToPageByInput(inputNum)" ><font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>

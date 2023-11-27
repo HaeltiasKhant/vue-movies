@@ -11,6 +11,7 @@ const movieStore = useMovieStore()
 
 const topRateds = computed(() => movieStore.topRateds)
 
+const pages = ref([])
 const inputNum = ref(null)
 const hasInputNum = ref(false)
 const pageExists = ref(true)
@@ -30,7 +31,7 @@ const getTopRateds = async(type) => {
 }
 
 const goToPageByInput = async(num) => {
-
+  if(!num) return
   if(num > totalPages.value ) {
     hasInputNum.value = false
     pageExists.value = false
@@ -56,6 +57,11 @@ const getTopRatedPage = async(type, num) => {
   await movieStore.getTopRateds(type, num)
 
   movieStore.isLoading = false
+
+  for(let i=0; i<totalPages.value; i++) {
+    const page = i + 1
+    pages.value.push(page)
+  } 
 
   if(num < 5 || num >= totalPages.value) hasInputNum.value = false
   else hasInputNum.value = true
@@ -91,18 +97,18 @@ getTopRatedPage(route.params.type, route.params.page)
           <font-awesome-icon :icon="['fas', 'tv']" /> TV series</span></li>
     </ul>
     
-    <Pagination :totalPages="totalPages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
+    <Pagination :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
 
     <div v-if="!pageExists" class="container text-center my-4">
       <h1 class="fs-1">Page not found</h1>
     </div>
 
-    <div class="row g-1" v-else>
+    <div class="row g-0" v-else>
       <ShowView v-for="show in topRateds" :key="show.id" :show="show"/>
     </div>
 
     <div class="d-lg-flex align-items-baseline justify-content-center">
-      <Pagination :totalPages="totalPages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
+      <Pagination :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
       <div class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
         <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" name="pageNumber">
         <button class="btn btn-outline-info" @click="goToPageByInput(inputNum)" ><font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>

@@ -151,7 +151,7 @@ getGenres('movie')
 
 <style scoped>
 .hideSearchBar {
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   top: 96%;
   left: 0%;

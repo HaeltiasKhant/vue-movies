@@ -20,7 +20,7 @@ const router = createRouter({
           component: HomeView
         },
         {
-          path: '/:type/genre-:genre_type/:id?/page-:page?',
+          path: '/:type/genre-:genre_type/:genre_id?/page-:page?',
           name: 'genre',
           component: () => import('../views/GenreView.vue')
         },

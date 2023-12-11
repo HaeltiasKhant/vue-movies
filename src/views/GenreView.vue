@@ -24,15 +24,18 @@ const goToPageByInput = async(num) => {
   if(num > totalPages.value ) {
     hasInputNum.value = false
     pageExists.value = false
-    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.id, page: num}})
+    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.genre_id, page: num}})
     return
   } else {
-    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.id, page: num}})
+    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.genre_id, page: num}})
   }
 }
 
 const getShowsByGenrePage = async(type, id, num) => {
+  
+
   pageExists.value = true
+
   pageNum.value = route.params.page
 
   movieStore.isLoading = true
@@ -40,7 +43,6 @@ const getShowsByGenrePage = async(type, id, num) => {
   await movieStore.getShowsByGenre(type, id, num)
 
   movieStore.isLoading = false
-
   
   for(let i=0; i<totalPages.value; i++) {
     const page = i + 1
@@ -59,11 +61,11 @@ const getShowsByGenrePage = async(type, id, num) => {
 }
 
 watch(route, () => {
-  if(route.params.type == 'movie') getShowsByGenrePage('movie', route.params.id, route.params.page)
-  if(route.params.type == 'tv') getShowsByGenrePage('tv', route.params.id, route.params.page)
+  if(route.params.type == 'movie') getShowsByGenrePage('movie', route.params.genre_id, route.params.page)
+  if(route.params.type == 'tv') getShowsByGenrePage('tv', route.params.genre_id, route.params.page)
 })
 
-getShowsByGenrePage(route.params.type, route.params.id, route.params.page)
+getShowsByGenrePage(route.params.type, route.params.genre_id, route.params.page)
 </script>
 
 <template>

@@ -16,33 +16,36 @@ const videos = computed(() => movieStore.videos)
 const IMDBRating = computed(() => movieStore.imdbRating)
 
 const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
+const trailerKeys = ref([])
 const trailerKey = ref('')
 const trailerURL = ref('')
 
 const getmovie = async() => {
 
   if(!movieID.value) return
-  else {
-    movieStore.isLoading = true
 
-    await movieStore.getVideos('movie', movieID.value)
+  movieStore.isLoading = true
 
-    for(let video in videos.value) {
-      const name = videos.value[video].name
-      if(name == "Official Trailer" || name == "Main Trailer") {
-        trailerKey.value = videos.value[video].key
-      }
+  await movieStore.getVideos('movie', movieID.value)
+  await movieStore.getDetails('movie', movieID.value)
+  await movieStore.getMovieCasts(movieID.value)
+  await movieStore.getSimilars('movie', movieID.value)
+  await movieStore.getIMDBrating(details.value.imdb_id)
+
+  for (let video in videos.value) {
+    const type = videos.value[video].type
+    if(type == "Trailer") {
+      trailerKeys.value.push(videos.value[video].key)
+      trailerKey.value = trailerKeys.value[trailerKeys.value.length - 1]
+    } else {
+      trailerKeys.value.push(videos.value[video].key)
+      trailerKey.value = trailerKeys.value[trailerKeys.value.length - 1]
     }
-
-    trailerURL.value = `https://www.youtube.com/watch?v=${trailerKey.value}`
-
-    await movieStore.getDetails('movie', movieID.value)
-    await movieStore.getMovieCasts(movieID.value)
-    await movieStore.getSimilars('movie', movieID.value)
-    await movieStore.getIMDBrating(details.value.imdb_id)
-
-    movieStore.isLoading = false
   }
+
+  trailerURL.value = `https://www.youtube.com/watch?v=${trailerKey.value}`
+
+  movieStore.isLoading = false
 }
 
 watch(route, () => {

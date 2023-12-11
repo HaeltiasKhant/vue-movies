@@ -31,8 +31,8 @@ const getGenreIndex = (i) => {
 }
 
 const GoToGenreView = (genreName, genreID) => {
-  if(genreMovie.value) router.push({ name: 'genre', params: { type: 'movie', genre_type: genreName, id: genreID, page: 1 }})
-  else router.push({ name: 'genre', params: { type: 'tv', genre_type: genreName, id: genreID, page: 1 }}) 
+  if(genreMovie.value) router.push({ name: 'genre', params: { type: 'movie', genre_type: genreName, genre_id: genreID, page: 1 }})
+  else router.push({ name: 'genre', params: { type: 'tv', genre_type: genreName, genre_id: genreID, page: 1 }}) 
 }
 
 const getGenres = (type) => {

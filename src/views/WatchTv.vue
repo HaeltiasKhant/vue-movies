@@ -28,6 +28,8 @@ const getSeason = async(num) => {
 
 const getTV = async () => {
 
+  if(!tvID.value) return
+
   movieStore.isLoading = true
 
   await movieStore.getVideos('tv', tvID.value)

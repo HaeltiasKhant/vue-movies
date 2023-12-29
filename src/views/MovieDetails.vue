@@ -59,7 +59,7 @@ getmovie()
 </script>
 
 <template>
-  <div class="container-fluid text-white" v-if="movieStore.isLoading">
+  <div v-if="movieStore.isLoading" class="container-fluid text-white">
     <div class="d-flex justify-content-center my-5">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -67,7 +67,7 @@ getmovie()
     </div>
   </div>
 
-  <div class="container text-white mb-5" v-else>
+  <div v-else class="container text-white mb-5">
     <div class="row my-2">
       <div class="col-lg-4 col-12 position-relative p-0">
         
@@ -140,7 +140,7 @@ getmovie()
 
     <p class="mt-4 mb-2 fs-2">You may also like</p>
 
-    <div class="row g-0">
+    <div v-if="!movieStore.isLoading" class="row g-0">
       <ShowView v-for="show in similarMovies.slice(0, 12)" :key="show.id" :show="show" />
     </div>
   </div>

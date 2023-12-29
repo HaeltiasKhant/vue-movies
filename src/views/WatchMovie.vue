@@ -19,7 +19,8 @@ const trailerKey = ref('')
 const trailerURL = ref('')
 
 const getmovie = async() => {
-
+  if(!movieID.value) return
+  
   movieStore.isLoading = true
 
   await movieStore.getVideos('movie', movieID.value)
@@ -122,7 +123,6 @@ getmovie()
         </div>
       </div>
     </div> 
-
   
     <p class="mt-4 mb-2 fs-2">You may also like</p>
 

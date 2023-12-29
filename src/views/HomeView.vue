@@ -1,7 +1,7 @@
 <script setup>
 import ShowView from '../components/ShowView.vue';
 import { useRoute, useRouter } from 'vue-router';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useMovieStore } from '../stores/counter';
 
 const trendings = computed(() => movieStore.trendings)

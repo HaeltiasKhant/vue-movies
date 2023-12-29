@@ -100,6 +100,13 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
 
   <div class="mx-lg-5 mx-1 mt-lg-3 mt-1 mb-5 text-white" v-else>
 
+    <div class="position-absolute right-0">
+      <ul class="dropdown-menu " style="min-width: 140px;">
+        <li class="" v-for="season in details.seasons" @click="getSeason(season.season_number)"><button
+            class="dropdown-item " type="button">{{ season.name }}</button></li>
+      </ul>
+    </div>
+
     <h2 class="pe-lg-3 mb-lg-4 mb-1 fw-normal my-3" >Search results for "{{ route.params.searchName }}"</h2>
 
     <ul class="nav nav-tabs border-bottom-info mb-lg-3 mb-2">

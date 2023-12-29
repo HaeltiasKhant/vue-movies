@@ -32,7 +32,6 @@ const getTV = async () => {
   movieStore.isLoading = true
 
   await movieStore.getVideos('tv', tvID.value)
-
   await movieStore.getDetails('tv', tvID.value)
   await movieStore.getTVCasts(tvID.value)
   await movieStore.getSeasonInfos(tvID.value ,1)
@@ -74,7 +73,7 @@ getTV()
 </script>
 
 <template>
-  <div class="container-fluid text-white" v-if="movieStore.isLoading">
+  <div v-if="movieStore.isLoading" class="container-fluid text-white">
     <div class="d-flex justify-content-center my-5">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -82,7 +81,7 @@ getTV()
     </div>
   </div>
 
-  <div class="mx-lg-5 text-white mb-5" v-else>
+  <div v-else class="mx-lg-5 text-white mb-5">
     <div class="row my-lg-4 my-2 g-0">
       <div class="col-lg-4 col-12 position-relative p-0">
 
@@ -179,7 +178,7 @@ getTV()
 
     <p class="mt-4 mb-2 fs-2">You may also like</p>
 
-    <div class="row g-0">
+    <div v-if="!movieStore.isLoading" class="row g-0">
       <ShowView v-for="show in similarTvs.slice(0, 12)" :key="show.id" :show="show" />
     </div>
   </div>

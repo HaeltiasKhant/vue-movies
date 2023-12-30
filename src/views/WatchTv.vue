@@ -28,7 +28,7 @@ const getSeason = async(num) => {
 
 const getTV = async () => {
 
-  if(!tvID.value) return
+  if(!route.params.epiNum) return
 
   movieStore.isLoading = true
 

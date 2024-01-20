@@ -1,15 +1,19 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps(['show'])
 const router = useRouter()
-const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
+const imgUrl = ref('')
 const movieID = computed(() => props.show.id)
 
 const hover = ref(false)
 const longTitle = ref(false)
 const longName = ref(false)
+
+const getShowPoster = () => {
+  imgUrl.value = 'https://image.tmdb.org/t/p/w185' + props.show.poster_path
+}
 
 const checkTitle = () => {
   if (props.show.title) {
@@ -35,11 +39,12 @@ const getShowInfos = async () => {
   if (props.show.name) {
     router.push({ name: 'tvInfos', params: { id: movieID.value } })
   }
-
 }
 
-checkTitle()
+onBeforeMount(() => getShowPoster())
+
 checkName()
+checkTitle()
 
 </script>
 
@@ -50,7 +55,7 @@ checkName()
     <div @click="getShowInfos" style="cursor: pointer;" class="me-lg-4 position-relative">
       <div class="bg-info h-100 w-100 rounded" :class="{ hoverAni: hover }"></div>
       <font-awesome-icon :icon="['fas', 'circle-play']" class="fs-1 hiddenAni" :class="{ playAni: hover }" />
-      <img :src="imgBaseUrl + props.show.poster_path" class="rounded w-100" alt="...">
+      <img :src="imgUrl" class="rounded w-100" alt="...">
     </div>
     
     <p v-if="!longTitle" class=" mt-1 mb-1">{{ props.show.title }}</p>

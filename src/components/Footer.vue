@@ -11,12 +11,23 @@
           streaming site with zero ads. We let you watch movies online without having to register or paying,
         with over 10000 movies and TV-Series. You can also Download full movies from Fakelixer and watch it later if you want.</p>
 
-        <div>
-          <span>Andriod app -</span>
-          <span class="ms-lg-3 ms-2">Terms of service -</span>
-          <span class="ms-lg-3 ms-2">Contact us -</span>
-          <span class="ms-lg-3 ms-2">Free movie apps -</span>
-          <span class="ms-lg-3 ms-2">Sitemap</span>
+        <div >
+          <a class="text-dark" href="https://myflixerz.to/android-movies-apk" style="text-decoration: none;">
+            <span>Andriod app -</span>
+          </a>
+          <a class="text-dark" href="https://myflixerz.to/android-movies-apk" style="text-decoration: none;">
+            <span class="ms-lg-3 ms-2">Terms of service -</span>
+          </a>
+          <a class="text-dark" href="https://myflixerz.to/android-movies-apk" style="text-decoration: none;">
+            <span class="ms-lg-3 ms-2">Contact us -</span>
+          </a>
+          <a class="text-dark" href="https://myflixerz.to/android-movies-apk" style="text-decoration: none;">
+            <span class="ms-lg-3 ms-2">Free movie apps -</span>
+          </a>
+          <a class="text-dark" href="https://myflixerz.to/android-movies-apk" style="text-decoration: none;">
+            <span class="ms-lg-3 ms-2">Sitemap</span>
+          </a>
+          
         </div>
       </div>
 

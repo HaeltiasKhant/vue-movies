@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onBeforeMount } from 'vue';
 import ShowView from '../components/ShowView.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMovieStore } from '../stores/counter';
@@ -15,7 +15,7 @@ const similarMovies = computed(() => movieStore.similars)
 const videos = computed(() => movieStore.videos)
 const IMDBRating = computed(() => movieStore.imdbRating)
 
-const imgBaseUrl = ref('https://image.tmdb.org/t/p/w185')
+const imgUrl = ref('')
 const trailerKeys = ref([])
 const trailerKey = ref('')
 const trailerURL = ref('')
@@ -27,7 +27,6 @@ const getmovie = async() => {
   movieStore.isLoading = true
 
   await movieStore.getVideos('movie', movieID.value)
-  await movieStore.getDetails('movie', movieID.value)
   await movieStore.getMovieCasts(movieID.value)
   await movieStore.getSimilars('movie', movieID.value)
   await movieStore.getIMDBrating(details.value.imdb_id)
@@ -44,9 +43,15 @@ const getmovie = async() => {
   }
 
   trailerURL.value = `https://www.youtube.com/watch?v=${trailerKey.value}`
+  
 
   movieStore.isLoading = false
 }
+
+onBeforeMount(async() => {
+  await movieStore.getDetails('movie', movieID.value)
+  imgUrl.value = 'https://image.tmdb.org/t/p/w185' + details.value.poster_path
+})
 
 watch(route, () => {
 
@@ -76,7 +81,7 @@ getmovie()
             <font-awesome-icon :icon="['fas', 'circle-play']" class="position-absolute top-50 start-50 translate-middle fs-1"/>
           </router-link>
         </div>
-        <img :src="imgBaseUrl + details.poster_path" :alt="details.title" class="rounded w-100 h-100 object-fit-cover">
+        <img :src="imgUrl" :alt="details.title" class="rounded w-100 h-100 object-fit-cover">
 
       </div>
 

@@ -137,19 +137,19 @@ const goToHomePage = () => {
  
       <ul class="nav nav-underline">
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="#">Andriod app</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="https://myflixerz.to/android-movies-apk">Andriod app</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="#">Terms of service</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="https://myflixerz.to/android-movies-apk">Terms of service</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="#">Contact us</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="https://myflixerz.to/android-movies-apk">Contact us</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="#">Free movie apps</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="https://myflixerz.to/android-movies-apk">Free movie apps</a>
         </li>
         <li class="nav-item pe-lg-4">
-          <a class="nav-link text-light p-0" aria-current="page" href="#">Sitemap</a>
+          <a class="nav-link text-light p-0" aria-current="page" href="https://myflixerz.to/android-movies-apk">Sitemap</a>
         </li>
       </ul>
 

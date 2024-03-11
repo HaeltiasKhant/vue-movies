@@ -24,16 +24,18 @@ const goToPageByInput = async(num) => {
   if(num > totalPages.value ) {
     hasInputNum.value = false
     pageExists.value = false
-    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.genre_id, page: num}})
+    router.push({ name: 'genre', params: { type: route.params.type, genre_id: route.params.genre_id, page: num}})
     return
   } else {
-    router.push({ name: 'genre', params: { type: route.params.type, id: route.params.genre_id, page: num}})
+    router.push({ name: 'genre', params: { type: route.params.type,  genre_id: route.params.genre_id, page: num}})
+    console.log(route.params.genre_id)
   }
 }
 
 const getShowsByGenrePage = async(type, id, num) => {
-  
 
+  if(!route.params.genre_id) return
+  
   pageExists.value = true
 
   pageNum.value = route.params.page

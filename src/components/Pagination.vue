@@ -15,7 +15,7 @@ const goPreviousPage = async(num) => {
   if(previousPage <= 0) return
   else {
     if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: previousPage}})
-    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: previousPage }})
+    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , genre_id: route.params.genre_id, page: previousPage }})
     else router.push({ name: route.name, params: { type: route.params.type , page: previousPage }})
   }
 }
@@ -25,7 +25,7 @@ const goNextPage = async(num) => {
   if(nextPage > totalPages) return
   else {
     if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: nextPage}})
-    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: nextPage }})
+    else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , genre_id: route.params.genre_id, page: nextPage }}) 
     else router.push({ name: route.name, params: { type: route.params.type , page: nextPage }})
   }
 }
@@ -33,7 +33,7 @@ const goNextPage = async(num) => {
 const goToPage = async(num) => {
 
   if(route.params.searchName) router.push({ name: 'search', params: { type: route.params.type, searchName : route.params.searchName, page: num}})
-  else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , id: route.params.id, page: num }})
+  else if(route.name == 'genre') router.push({ name: route.name, params: { type: route.params.type , genre_id: route.params.genre_id, page: num }})
   else router.push({ name: route.name, params: { type: route.params.type , page: num }})
 }
 

@@ -112,7 +112,7 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
           <font-awesome-icon :icon="['fas', 'tv']" /> TV series</span></li>
     </ul>
 
-    <Pagination v-if="!searchedMovie" :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum"  />
+    <Pagination v-if="searchedMovie" :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum"  />
 
     <div v-if="!hasResults" class="container text-center my-4" >
       <h1 class="fs-1">No results</h1>
@@ -127,8 +127,8 @@ getSearchPage(route.params.type, route.params.searchName ,route.params.page)
     </div>
 
     <div class="d-lg-flex align-items-baseline justify-content-center" >
-      <Pagination v-if="!searchedMovie" :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
-      <div v-if="!searchedMovie" class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
+      <Pagination v-if="searchedMovie" :totalPages="totalPages" :pages="pages" :hasInputNum="hasInputNum" :pageNum="pageNum" />
+      <div v-if="searchedMovie" class="d-flex align-items-center mt-lg-0 mt-2 ms-lg-2 ms-1">
         <input type="text" placeholder="Jump to-" class="border rounded me-1" style="width: 100px; height: 38px;" v-model="inputNum" name="pageNumber">
         <button class="btn btn-outline-info" @click="goToPageByInput(inputNum)" ><font-awesome-icon :icon="['fas', 'arrow-right']" class="text-light" /></button>
       </div>

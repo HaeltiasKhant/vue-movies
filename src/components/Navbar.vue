@@ -35,10 +35,10 @@ const GoToGenreView = (genreName, genreID) => {
   else router.push({ name: 'genre', params: { type: 'tv', genre_type: genreName, genre_id: genreID, page: 1 }}) 
 }
 
-const getGenres = (type) => {
+const getGenres = async(type) => {
   if(type == 'movie') {
     genreMovie.value = true
-    movieStore.getGenres(type)
+    await movieStore.getGenres(type)
   } else {
     genreMovie.value = false
     movieStore.getGenres(type)
